@@ -1,0 +1,33 @@
+import streamlit as st
+
+# Page Configuration
+st.set_page_config(page_title="MinePlug AI", page_icon="🤖")
+
+st.title("🤖 MinePlug AI")
+st.markdown("### Minecraft Plugin Generator (DeepSeek Powered)")
+
+# Sidebar for API Key (Safe way)
+with st.sidebar:
+    st.header("Settings")
+    api_key = st.text_input("Enter Groq API Key:", type="password")
+    st.info("Get your free key from: [console.groq.com](https://console.groq.com)")
+
+# Main UI
+prompt = st.text_area("What should the plugin do?", placeholder="Example: A plugin that heals players when they kill a zombie.")
+
+if st.button("Generate Java Code"):
+    if not api_key:
+        st.error("Please enter your API Key in the sidebar!")
+    elif not prompt:
+        st.warning("Please describe your plugin first!")
+    else:
+        st.success("Generating... (This is where the AI logic goes)")
+        # Abhi ke liye ye demo dikhayega
+        st.code(f"""
+package org.mineplug;
+import org.bukkit.plugin.java.JavaPlugin;
+// AI will write the full code here soon!
+        """, language="java")
+
+st.write("---")
+st.caption("MinePlug AI v1.0 - Fast & Web-based")
